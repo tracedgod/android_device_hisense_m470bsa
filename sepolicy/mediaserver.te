@@ -1,0 +1,1 @@
+allow mediaserver { nv_device nvhost_device }:chr_file rw_file_perms;

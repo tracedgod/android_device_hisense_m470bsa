@@ -1,0 +1,5 @@
+#!/system/bin/sh
+
+echo "***"
+echo "*** Running init.d scripts for Sero 7 Pro (m470) (DoPa1)"
+echo "***"
