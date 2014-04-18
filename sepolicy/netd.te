@@ -1,0 +1,4 @@
+# DoPa (20140416) - this was added to fix error an message;
+# it may not be the most appropriate solution
+
+allow netd kernel:system module_request;
