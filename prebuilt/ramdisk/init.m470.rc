@@ -343,6 +343,7 @@ service btmacwriter /system/bin/btmacwriter
     user bluetooth
     group bluetooth net_bt_admin
     oneshot
+    seclabel u:r:btmacwriter:s0
 
 #BCM
 service hciattach /system/bin/brcm_patchram_plus -d --enable_hci --tosleep 50000 --baudrate 3000000 --patchram /etc/firmware/bcm4330.hcd --enable_lpm /dev/ttyHS2
@@ -437,6 +438,8 @@ on property:service.adb.tcp.port=-1
 # dopa (2013/09/17) - enable logcat daemon
 service logcat /system/bin/logcat -r1000 -n 4 -v time -f /data/local/logcat.log
     class main
+    user root
+    group root
 
 # dopa (2013/09/17) - enable init.d support
 service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
