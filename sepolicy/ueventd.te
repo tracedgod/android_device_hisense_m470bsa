@@ -1,0 +1,2 @@
+allow ueventd sysfs_devices_tegradc:file {open write};
+

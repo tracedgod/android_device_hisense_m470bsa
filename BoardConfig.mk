@@ -42,7 +42,9 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Bootloader & Kernel
 TARGET_NO_BOOTLOADER := true
 TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
-BOARD_KERNEL_CMDLINE := androidboot.selinux=enforcing
+#
+# BOARD_KERNEL_CMDLINE := androidboot.selinux=enforcing
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
 
 BOARD_HAL_STATIC_LIBRARIES := \
     libdumpstate.m470 \
@@ -92,19 +94,26 @@ BOARD_SEPOLICY_UNION += \
         app.te \
         btmacwriter.te \
         device.te \
+        dhcp.te \
         drmserver.te \
         file.te \
         file_contexts \
         genfs_contexts \
         gpsd.te \
         healthd.te \
+        init.te \
         init_shell.te \
+        kernel.te \
         keystore.te \
+        logd.te \
         mediaserver.te \
         netd.te \
         rild.te \
         sensors_config.te \
         surfaceflinger.te \
-        system.te \
+        system_app.te \
+        system_server.te \
+        ueventd.te \
+        untrusted_app.te \
         zygote.te
 

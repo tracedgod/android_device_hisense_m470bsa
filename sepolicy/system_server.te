@@ -1,0 +1,8 @@
+allow system_server { nv_device knv_device }:chr_file rw_file_perms;
+allow system_server sysfs_devices_system_cpu:file w_file_perms;
+allow system_server sysfs_devices_system_cpu:dir r_dir_perms;
+allow system_server diag_device:chr_file rw_file_perms;
+allow system_server gps_data_file:dir r_dir_perms;
+allow system_server gps_data_file:fifo_file { rw_file_perms setattr };
+allow system_server sensors_data_file:file rw_file_perms;
+

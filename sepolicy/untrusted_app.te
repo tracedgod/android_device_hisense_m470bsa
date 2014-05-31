@@ -1,0 +1,15 @@
+# DoPa (20140416) - everything below was added to fix error messages;
+# they may not be the most appropriate solutions
+
+# several apps check the attr of '/data/app'
+allow untrusted_app apk_data_file:dir getattr;
+
+# allow apps to check for an 'su' binary
+allow untrusted_app su_exec:file getattr;
+
+# allow apps to check if SELinux is enforcing
+selinux_getenforce(untrusted_app);
+
+# 'le._engine30.ca' wants to access /dev/tegra-throughput - changed its type
+# from 'video_device' to 'tegra_throughput_device' to limit caller's access
+allow untrusted_app tegra_throughput_device:chr_file { read write open ioctl };

@@ -1,0 +1,1 @@
+allow kernel sysfs_devices_tegradc:{ dir file lnk_file } relabelto;
