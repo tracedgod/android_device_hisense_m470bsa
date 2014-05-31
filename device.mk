@@ -39,6 +39,12 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 DEVICE_PACKAGE_OVERLAYS := \
     device/hisense/m470/overlay
 
+PRODUCT_PACKAGES := \
+    libwpa_client \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
@@ -55,6 +61,7 @@ PRODUCT_PACKAGES += \
     libhealthd.m470 \
     librs_jni \
     lights.m470 \
+    updater \
     setup_fs
 
 PRODUCT_PACKAGES += \
@@ -112,6 +119,7 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
     device/hisense/m470/prebuilt/kernel/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
     device/hisense/m470/prebuilt/kernel/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
+
 
 ### Ramdisk ###
 PRODUCT_COPY_FILES += \
