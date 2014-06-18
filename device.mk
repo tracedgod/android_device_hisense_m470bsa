@@ -62,7 +62,8 @@ PRODUCT_PACKAGES += \
     librs_jni \
     lights.m470 \
     updater \
-    setup_fs
+    setup_fs \
+    busybox
 
 PRODUCT_PACKAGES += \
     libnfc-nci \
@@ -131,10 +132,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner
-
-#/system/xbin
-PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/xbin/busybox:system/xbin/busybox
 
 ### Blobs ###
 $(call inherit-product, vendor/hisense/m470/device-vendor.mk)
