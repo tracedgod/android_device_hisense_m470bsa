@@ -1,7 +1,7 @@
 /dev/diag                         u:object_r:diag_device:s0
 /dev/knvmap                       u:object_r:knv_device:s0
-/dev/nvmap                        u:object_r:nv_device:s0
-/dev/nvhost-.*                    u:object_r:nv_device:s0
+/dev/nvmap                        u:object_r:gpu_device:s0
+/dev/nvhost-.*                    u:object_r:gpu_device:s0
 /dev/ov2655                       u:object_r:camera_device:s0
 /dev/ov5640                       u:object_r:camera_device:s0
 /dev/ttyHS1                       u:object_r:gps_device:s0
@@ -22,4 +22,10 @@
 # DoPa (20140529) - corrected BT rfkill path
 /sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/state -- u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/type -- u:object_r:sysfs_bluetooth_writable:s0
+
+/cache/lost+found                 u:object_r:system_file:s0
+
+/system/bin/brcm_patchram_plus          u:object_r:hci_attach_exec:s0
+/system/bin/btmacwriter                 u:object_r:btmacwriter_exec:s0
+/system/bin/glgps_nvidiaTegra2android   u:object_r:gpsd_exec:s0
 

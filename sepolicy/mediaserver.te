@@ -1,5 +1,3 @@
-allow mediaserver { nv_device nvhost_device }:chr_file rw_file_perms;
-
 # Create and use netlink kobject uevent sockets.
 allow mediaserver self:netlink_kobject_uevent_socket create_socket_perms;
 

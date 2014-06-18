@@ -382,6 +382,7 @@ service setup_fs /system/bin/setup_fs \
     user root
     group root
     oneshot
+    seclabel u:r:init:s0
 
 # Create emulated storage
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
@@ -449,6 +450,7 @@ service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/
     user root
     group root
     oneshot
+    seclabel u:r:init:s0
 
 # dopa (2014/03/12) - enable battery status display when "off" but attached to AC
 service charger /charger
