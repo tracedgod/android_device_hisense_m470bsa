@@ -10,11 +10,14 @@
 
 /data/tf(/.*)?                    u:object_r:tee_data_file:s0
 
-/system/bin/brcm_patchram_plus -- u:object_r:hci_attach_exec:s0
-/system/bin/glgps_nvidiaTegra2android -- u:object_r:gpsd_exec:s0
+/system/bin/brcm_patchram_plus    u:object_r:hci_attach_exec:s0
+/system/bin/btmacwriter           u:object_r:btmacwriter_exec:s0
+/system/bin/glgps_nvidiaTegra2android    u:object_r:gpsd_exec:s0
 
 /sys/devices/system/cpu(/.*)?     u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/tegradc\.0(/.*)?     u:object_r:sysfs_devices_tegradc:s0
 /sys/devices/tegradc\.1(/.*)?     u:object_r:sysfs_devices_tegradc:s0
-/sys/devices/platform/bcm4330_rfkill/rfkill/rfkill0/state   --  u:object_r:sysfs_bluetooth_writable:s0
-/sys/devices/platform/bcm4330_rfkill/rfkill/rfkill0/type    --  u:object_r:sysfs_bluetooth_writable:s0
+
+# these should be relabeled by the default 'file_contexts' but aren't
+/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/state       u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/type        u:object_r:sysfs_bluetooth_writable:s0
