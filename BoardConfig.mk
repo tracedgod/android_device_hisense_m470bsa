@@ -119,5 +119,6 @@ BOARD_SEPOLICY_UNION += \
         system_server.te \
         ueventd.te \
         untrusted_app.te \
+        vold.te \
         zygote.te
 
