@@ -63,7 +63,13 @@ PRODUCT_PACKAGES += \
     lights.m470 \
     updater \
     setup_fs \
-    busybox
+    busybox \
+    fuse \
+    exfat \
+    ntfs-3g \
+    ntfsfix \
+    mkntfs \
+    e2fsck
 
 PRODUCT_PACKAGES += \
     libnfc-nci \
