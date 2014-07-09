@@ -110,5 +110,6 @@ BOARD_SEPOLICY_UNION += \
         sensors_config.te \
         surfaceflinger.te \
         system.te \
+        vold.te \
         zygote.te
 

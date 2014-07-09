@@ -1,0 +1,2 @@
+allow vold fuse_device:chr_file rw_file_perms;
+allow vold self:capability { setuid setgid };
