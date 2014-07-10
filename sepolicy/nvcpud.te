@@ -1,0 +1,9 @@
+type nvcpud, domain;
+type nvcpud_exec, exec_type, file_type;
+init_daemon_domain(nvcpud)
+
+binder_use(nvcpud)
+binder_service(nvcpud)
+binder_call(nvcpud, system_server)
+
+allow nvcpud nvcpu_device:chr_file { open read write };

@@ -109,9 +109,11 @@ BOARD_SEPOLICY_UNION += \
         init_shell.te \
         kernel.te \
         keystore.te \
+        logcat.te \
         logd.te \
         mediaserver.te \
         netd.te \
+        nvcpud.te \
         rild.te \
         sensors_config.te \
         surfaceflinger.te \

@@ -429,6 +429,7 @@ service nvcpud /system/bin/nvcpud
     class main
     user root
     group root
+    seclabel u:r:nvcpud:s0
 
 # dopa (2013/09/17) - enable adb over network (from CM)
 on property:service.adb.tcp.port=5555
@@ -439,10 +440,11 @@ on property:service.adb.tcp.port=-1
     start adbd
 
 # dopa (2013/09/17) - enable logcat daemon
-service logcat /system/bin/logcat -r1000 -n 4 -v time -f /data/local/logcat.log
+service logcat /system/bin/logcat -r1000 -n 4 -v time -f /data/var/logcat.log
     class main
     user root
-    group root
+    group log
+    seclabel u:r:logcat:s0
 
 # dopa (2013/09/17) - enable init.d support
 service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
