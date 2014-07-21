@@ -44,5 +44,3 @@
 /dev/ion	0666	system	system
 /dev/bcm2079x	0660	nfc	nfc
 /dev/timerinfo	0444	system	system
-/sys/devices/system/cpu/cpufreq/gov_interactive* ../interactive/max_boost 0644 system system
-/sys/devices/system/cpu/cpufreq/gov_interactive* ../interactive/go_maxspeed_load 0644 system system

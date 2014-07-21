@@ -114,7 +114,6 @@ BOARD_SEPOLICY_UNION += \
         mediaserver.te \
         netd.te \
         nvcpud.te \
-        rild.te \
         sensors_config.te \
         surfaceflinger.te \
         system_app.te \
