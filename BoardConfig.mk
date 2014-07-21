@@ -106,10 +106,10 @@ BOARD_SEPOLICY_UNION += \
         keystore.te \
         mediaserver.te \
         netd.te \
-        rild.te \
         sensors_config.te \
         surfaceflinger.te \
         system.te \
+        untrusted_app.te \
         vold.te \
         zygote.te
 

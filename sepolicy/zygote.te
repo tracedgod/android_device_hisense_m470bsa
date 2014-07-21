@@ -1,1 +1,2 @@
-allow zygote sysfs_devices_system_cpu:dir r_dir_perms;
+# this is used by SuperSU
+allow zygote init:fifo_file { read write };

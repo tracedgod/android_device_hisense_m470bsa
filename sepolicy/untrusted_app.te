@@ -1,0 +1,33 @@
+# DoPa (20140416) - everything below was added to fix error messages;
+# they may not be the most appropriate solutions
+
+# several apps check the attr of '/data/app'
+allow untrusted_app apk_data_file:dir getattr;
+
+# allow apps to check for an 'su' binary
+allow untrusted_app su_exec:file getattr;
+
+# allow apps to check if SELinux is enforcing
+selinux_getenforce(untrusted_app);
+
+# 'le._engine30.ca' wants to access /dev/tegra-throughput - changed its type
+# from 'video_device' to 'tegra_throughput_device' to limit caller's access
+allow untrusted_app tegra_throughput_device:chr_file { read write open ioctl };
+
+# allow apps to look at 'debugfs' items (e.g. cpu temperature)
+allow untrusted_app debugfs:file { read getattr };
+
+# this rule was taken from a post-4.4.4 version of AOSP:
+# Some apps ship with shared libraries and binaries that they write out
+# to their sandbox directory and then execute.
+allow untrusted_app app_data_file:file { rx_file_perms execmod };
+
+# allow apps to look at the '/dev' directory (e.g. file managers)
+allow untrusted_app device:dir r_dir_perms;
+
+# this is used by SuperSU
+allow untrusted_app init:unix_stream_socket { getattr getopt };
+allow untrusted_app zygote:unix_stream_socket { getattr getopt };
+
+# needed by XposedInstaller
+allow untrusted_app zygote_exec:file r_file_perms;

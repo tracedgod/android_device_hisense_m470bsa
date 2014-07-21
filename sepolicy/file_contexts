@@ -1,4 +1,3 @@
-/dev/diag                         u:object_r:diag_device:s0
 /dev/knvmap                       u:object_r:knv_device:s0
 /dev/ov2655                       u:object_r:camera_device:s0
 /dev/ov5640                       u:object_r:camera_device:s0
