@@ -98,7 +98,6 @@ BOARD_SEPOLICY_UNION += \
         app.te \
         btmacwriter.te \
         device.te \
-        dhcp.te \
         drmserver.te \
         file.te \
         file_contexts \
@@ -108,7 +107,6 @@ BOARD_SEPOLICY_UNION += \
         init.te \
         init_shell.te \
         kernel.te \
-        keystore.te \
         logcat.te \
         logd.te \
         mediaserver.te \

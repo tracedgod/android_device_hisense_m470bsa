@@ -1,9 +1,8 @@
-allow appdomain sysfs_devices_system_cpu:dir r_dir_perms;
-
 # DoPa (20140416) - everything below was added to fix error messages;
 # they may not be the most appropriate solutions
 
 # let apps mess with CPU settings
+# (all domains already have read access to sysfs files/dirs)
 allow appdomain sysfs_devices_system_cpu:file rw_file_perms;
 
 # several apps try to read this type of file
