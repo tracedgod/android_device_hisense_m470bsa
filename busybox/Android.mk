@@ -13,6 +13,9 @@
 # limitations under the License.
 #
 # DoPa (20140608) - made 'busybox' a package to automate creation of symlinks
+# DoPa (20140724) - replaced 'busybox' binary with one that's staticly linked
+# note: symlinks for commands that duplicate those in 'toolbox' or are
+#       inappropriate for the Sero7Pro (e.g. MTD functions) have been omitted
 
 LOCAL_PATH := $(call my-dir)
 
@@ -30,65 +33,63 @@ TOOLS := \
 	[[ \
 	adjtimex \
 	arp \
+	arping \
 	ash \
 	awk \
 	base64 \
 	basename \
-	bbconfig \
+	beep \
 	blkid \
 	blockdev \
-	brctl \
 	bunzip2 \
 	bzcat \
 	bzip2 \
 	cal \
-	cat \
 	catv \
 	chattr \
 	chgrp \
-	chmod \
-	chown \
+	chpst \
 	chroot \
-	clear \
-	cmp \
+	chrt \
+	cksum \
 	comm \
 	cp \
 	cpio \
 	crond \
 	crontab \
 	cut \
-	date \
 	dc \
-	dd \
 	depmod \
 	devmem \
 	df \
 	diff \
 	dirname \
-	dmesg \
 	dnsd \
+	dnsdomainname \
 	dos2unix \
-	du \
 	echo \
 	ed \
 	egrep \
 	env \
+	envdir \
+	envuidgid \
 	expand \
 	expr \
 	false \
+	fbset \
 	fbsplash \
 	fdisk \
 	fgrep \
 	find \
-	flash_lock \
-	flash_unlock \
-	flashcp \
+	findfs \
 	flock \
 	fold \
 	free \
 	freeramdisk \
+	fsck \
 	fstrim \
 	fsync \
+	ftpd \
 	ftpget \
 	ftpput \
 	fuser \
@@ -97,26 +98,28 @@ TOOLS := \
 	groups \
 	gunzip \
 	gzip \
-	halt \
 	head \
 	hexdump \
-	id \
-	ifconfig \
+	hostname \
+	httpd \
+	hush \
+	hwclock \
+	ifdown \
+	ifup \
 	inetd \
-	insmod \
 	install \
-	ionice \
 	iostat \
 	ip \
-	kill \
+	ipaddr \
+	ipcalc \
+	iproute \
+	iprule \
+	iptunnel \
 	killall \
 	killall5 \
 	less \
-	ln \
 	losetup \
-	ls \
 	lsattr \
-	lsmod \
 	lsusb \
 	lzcat \
 	lzma \
@@ -124,28 +127,20 @@ TOOLS := \
 	lzopcat \
 	man \
 	md5sum \
-	mesg \
-	mkdir \
+	mkdosfs \
 	mke2fs \
 	mkfifo \
 	mkfs.ext2 \
 	mkfs.vfat \
-	mknod \
-	mkswap \
-	mktemp \
 	modinfo \
 	modprobe \
 	more \
-	mount \
 	mountpoint \
 	mpstat \
-	mv \
-	nanddump \
-	nandwrite \
+	nameif \
 	nbd-client \
-	netstat \
 	nice \
-	nohup \
+	nmeter \
 	nslookup \
 	ntpd \
 	od \
@@ -153,54 +148,50 @@ TOOLS := \
 	pgrep \
 	pidof \
 	ping \
+	ping6 \
 	pipe_progress \
 	pkill \
 	pmap \
-	poweroff \
-	printenv \
 	printf \
-	ps \
+	pscan \
 	pstree \
 	pwd \
 	pwdx \
+	rdate \
 	rdev \
-	readlink \
+	readahead \
 	realpath \
-	renice \
 	reset \
 	resize \
 	rev \
-	rm \
-	rmdir \
-	rmmod \
-	route \
 	run-parts \
-	rx \
+	script \
+	scriptreplay \
 	sed \
 	seq \
 	setconsole \
+	setlogcons \
 	setserial \
 	setsid \
-	sh \
+	setuidgid \
 	sha1sum \
 	sha256sum \
 	sha3sum \
 	sha512sum \
-	sleep \
+	slattach \
+	smemcap \
+	softlimit \
 	sort \
 	split \
 	stat \
 	strings \
 	stty \
 	sum \
-	swapoff \
-	swapon \
-	sync \
 	sysctl \
 	tac \
 	tail \
 	tar \
-	taskset \
+	tcpsvd \
 	tee \
 	telnet \
 	telnetd \
@@ -209,16 +200,15 @@ TOOLS := \
 	tftpd \
 	time \
 	timeout \
-	top \
-	touch \
 	tr \
 	traceroute \
+	traceroute6 \
 	true \
+	tty \
 	ttysize \
-	tune2fs \
-	umount \
+	tunctl \
+	udpsvd \
 	uname \
-	uncompress \
 	unexpand \
 	uniq \
 	unix2dos \
@@ -226,21 +216,23 @@ TOOLS := \
 	unlzop \
 	unxz \
 	unzip \
-	uptime \
 	usleep \
 	uudecode \
 	uuencode \
 	vi \
 	watch \
+	watchdog \
 	wc \
 	wget \
 	which \
 	whoami \
+	whois \
 	xargs \
 	xz \
 	xzcat \
 	yes \
-	zcat
+	zcat \
+	zcip
 
 SYMLINKS := $(addprefix $(LOCAL_MODULE_PATH)/,$(TOOLS))
 $(SYMLINKS): BUSYBOX_BINARY := $(LOCAL_MODULE)
