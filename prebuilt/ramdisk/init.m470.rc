@@ -362,10 +362,10 @@ service gps-daemon /system/bin/glgps_nvidiaTegra2android -c /system/etc/gps/gpsc
     group system 
   # inet sdcard_rw sdcard_r
 
-# DoPa (20140528) - the stock 'tf_daemon' isn't compatible with 4.4.3+
-#                   because it isn't a "position independent executable"
+# DoPa (20140725) - the stock 'tf_daemon' isn't a "position independent executable"
+#                   and requires a patch to the system linker to run in 4.4.3x
 # Prepare TF service
-# import init.tf.rc
+import init.tf.rc
 
 # bugreport is triggered by the VOLUME-DOWN and VOLUME-UP keys
 service bugreport /system/bin/dumpstate -d -v -o /data/storage/bugreports/bugreport
