@@ -99,6 +99,7 @@ BOARD_SEPOLICY_UNION += \
         drmserver.te \
         file.te \
         file_contexts \
+        fs_use \
         genfs_contexts \
         gpsd.te \
         healthd.te \

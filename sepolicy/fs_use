@@ -1,0 +1,1 @@
+fs_use_xattr f2fs u:object_r:labeledfs:s0;

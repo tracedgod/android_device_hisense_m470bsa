@@ -70,7 +70,9 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     mkntfs \
     e2fsck \
-    NvCPLSvc
+    NvCPLSvc \
+    mkfs.f2fs \
+    fsck.f2fs
 
 PRODUCT_PACKAGES += \
     libnfc-nci \
@@ -121,7 +123,6 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
     device/hisense/m470/prebuilt/kernel/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
     device/hisense/m470/prebuilt/kernel/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
-    device/hisense/m470/prebuilt/kernel/modules/gps_drv.ko:system/lib/modules/gps_drv.ko \
     device/hisense/m470/prebuilt/kernel/modules/lib80211.ko:system/lib/modules/lib80211.ko \
     device/hisense/m470/prebuilt/kernel/modules/mac80211.ko:system/lib/modules/mac80211.ko \
     device/hisense/m470/prebuilt/kernel/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
@@ -131,7 +132,7 @@ PRODUCT_COPY_FILES += \
 
 ### Ramdisk ###
 PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/ramdisk/fstab.m470:root/fstab.m470 \
+    device/hisense/m470/prebuilt/ramdisk/fstab.m470-ext4:root/fstab.m470 \
     device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc \
     device/hisense/m470/prebuilt/ramdisk/init.tf.rc:root/init.tf.rc \
