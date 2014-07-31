@@ -69,7 +69,8 @@ PRODUCT_PACKAGES += \
     ntfs-3g \
     ntfsfix \
     mkntfs \
-    e2fsck
+    e2fsck \
+    NvCPLSvc
 
 PRODUCT_PACKAGES += \
     libnfc-nci \
