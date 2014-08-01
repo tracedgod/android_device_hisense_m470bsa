@@ -59,7 +59,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 
 # Recovery
 TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
-TARGET_RECOVERY_FSTAB = device/hisense/m470/prebuilt/ramdisk/fstab.m470
+TARGET_RECOVERY_FSTAB = device/hisense/m470/prebuilt/ramdisk/fstab.m470-ext4
 
 # DoPa (20140604) - added to customize AOSP OTA packaging
 # OTA packaging options
