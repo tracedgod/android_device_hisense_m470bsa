@@ -131,7 +131,7 @@ PRODUCT_COPY_FILES += \
 
 ### Ramdisk ###
 PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/ramdisk/fstab.m470-ext4:root/fstab.m470 \
+    device/hisense/m470/prebuilt/ramdisk/fstab.m470:root/fstab.m470 \
     device/hisense/m470/prebuilt/ramdisk/init.m470.rc:root/init.m470.rc \
     device/hisense/m470/prebuilt/ramdisk/init.m470.usb.rc:root/init.m470.usb.rc \
     device/hisense/m470/prebuilt/ramdisk/init.tf.rc:root/init.tf.rc \
