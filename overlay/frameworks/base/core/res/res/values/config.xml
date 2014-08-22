@@ -260,4 +260,7 @@
         <item>com.android.location.fused</item>
     </string-array>
 
+    <!-- If supported and enabled, are dreams activated when asleep and charging? (by default) -->
+    <bool name="config_dreamsActivatedOnSleepByDefault">true</bool>
+
 </resources>
