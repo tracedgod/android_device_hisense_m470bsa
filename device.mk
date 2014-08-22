@@ -70,7 +70,6 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     mkntfs \
     e2fsck \
-    NvCPLSvc \
     mkfs.f2fs \
     fsck.f2fs
 
