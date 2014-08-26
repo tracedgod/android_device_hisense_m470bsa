@@ -166,3 +166,6 @@ PRODUCT_COPY_FILES += \
 ### Blobs ###
 $(call inherit-product, vendor/hisense/m470/device-vendor.mk)
 
+### Whatever you want to add to make the ROM yours ###
+$(call inherit-product-if-exists, vendor/builder/m470/device-builder.mk)
+
