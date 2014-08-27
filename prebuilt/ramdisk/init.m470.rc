@@ -46,7 +46,6 @@ on init
 on fs
     mkdir /mnt/modem 0770 radio system
     mount_all /fstab.m470
-#    mount ext4 /dev/block/platform/sdhci-tegra.3/by-name/THD /thirdparty wait ro
     setprop ro.crypto.fuse_sdcard true
 
 on post-fs-data
@@ -435,11 +434,11 @@ on property:service.adb.tcp.port=-1
     stop adbd
     start adbd
 
-# dopa (2013/09/17) - enable logcat daemon
-service logcat /system/bin/logcat -r1000 -n 4 -v time -f /data/local/logcat.log
-    class main
-    user root
-    group root
+# dopa (2014/08/27) - disable logcat daemon
+#service logcat /system/bin/logcat -r1000 -n 4 -v time -f /data/local/logcat.log
+#    class main
+#    user root
+#    group root
 
 # dopa (2013/09/17) - enable init.d support
 service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
