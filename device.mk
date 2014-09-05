@@ -80,6 +80,29 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
+###### PhilZ Recovery ######
+
+ifeq ($(RECOVERY_VARIANT),philz)
+
+PRODUCT_PACKAGES += \
+    bootscripts_mnt.sh \
+    e2fsck_recovery \
+    killrecovery.sh \
+    minivold \
+    mke2fs_recovery \
+    mkntfs.recovery \
+    mount.exfat_static \
+    mount.ntfs-3g \
+    parted \
+    raw-backup.sh \
+    sdparted \
+    stitch.png \
+    tune2fs_recovery \
+    virtual_keys.png \
+    zip
+
+endif
+
 ###### AOSP ######
 
 ### Permissions ###

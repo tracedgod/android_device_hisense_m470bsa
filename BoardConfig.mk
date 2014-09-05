@@ -43,7 +43,9 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 805306368
 #BOARD_CACHEIMAGE_PARTITION_SIZE := 536870912
 #BOARD_USERDATAIMAGE_PARTITION_SIZE := 5972672512
 
+# both PhilzTouch and patches to AOSP Recovery use TARGET_USERIMAGES_USE_F2FS
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 BOARD_FLASH_BLOCK_SIZE := 4096
 
 # Bootloader & Kernel
@@ -65,7 +67,11 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 
 # Recovery
-TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
+# comment-out RECOVERY_VARIANT to build the AOSP version of recovery
+RECOVERY_VARIANT := philz
+ifeq ($(RECOVERY_VARIANT),)
+    TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
+endif
 TARGET_RECOVERY_FSTAB = device/hisense/m470/prebuilt/ramdisk/fstab.m470
 
 # DoPa (20140604) - added to customize AOSP OTA packaging
