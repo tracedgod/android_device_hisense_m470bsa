@@ -21,7 +21,9 @@
 /dev/block/platform/sdhci-tegra.3/by-name/LNX   /boot        emmc   defaults                                                                  defaults
 /dev/block/platform/sdhci-tegra.3/by-name/SOS   /recovery    emmc   defaults                                                                  defaults
 /dev/block/platform/sdhci-tegra.3/by-name/USP   /staging     emmc   defaults                                                                  defaults
-/dev/block/platform/sdhci-tegra.3/by-name/MDM   /mnt/modem   ext4   defaults                                                                  defaults
-/dev/block/platform/sdhci-tegra.3/by-name/THD   /thirdparty  ext4   defaults                                                                  defaults
+/dev/block/platform/sdhci-tegra.3/by-name/MDM   /mnt/modem   ext4   noatime,nosuid,nodev,nodiratime,data=ordered,nodelalloc,noauto_da_alloc   wait
+/dev/block/platform/sdhci-tegra.3/by-name/MDM   /mnt/modem   f2fs   noatime,nosuid,nodev,nodiratime,discard,inline_xattr,errors=recover       wait
+/dev/block/platform/sdhci-tegra.3/by-name/THD   /thirdparty  ext4   noatime,nosuid,nodev,nodiratime,data=ordered,nodelalloc,noauto_da_alloc   wait
+/dev/block/platform/sdhci-tegra.3/by-name/THD   /thirdparty  f2fs   noatime,nosuid,nodev,nodiratime,discard,inline_xattr,errors=recover       wait
 /devices/platform/sdhci-tegra.0/mmc_host/mmc1   auto         auto   defaults                                                                  voldmanaged=sdcard1:auto
 /devices/platform/tegra-ehci                    auto         auto   defaults                                                                  voldmanaged=usbdisk:auto
