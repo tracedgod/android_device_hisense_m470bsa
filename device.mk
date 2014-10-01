@@ -64,7 +64,6 @@ PRODUCT_PACKAGES += \
     updater \
     setup_fs \
     busybox \
-    fuse \
     exfat \
     ntfs-3g \
     ntfsfix \
