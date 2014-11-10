@@ -120,6 +120,7 @@ BOARD_SEPOLICY_UNION += \
         keystore.te \
         mediaserver.te \
         netd.te \
+        recovery.te \
         sensors_config.te \
         surfaceflinger.te \
         system.te \
