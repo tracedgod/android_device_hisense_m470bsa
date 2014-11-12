@@ -1,14 +1,12 @@
 # Icera agpsd
 agpsd.lib_path=/system/lib/libagps-brcm4751.so
-agpsd.dev_path=/dev/ttyACM4
+agpsd.dev_path=/dev/ttyHS1
 
 #NFC
 debug.nfc.fw_download=false
 debug.nfc.se=false
 
 persist.tegra.nvmmlite=1
-
-ro.audio.monitorOrientation=true
 ro.opengles.version = 131072
 # set default lcd density to TVDPI
 ro.sf.lcd_density=213
@@ -17,8 +15,3 @@ ro.zygote.disable_gl_preload=true
 
 service.adb.root=1
 wifi.interface=wlan0
-
-
-
-
-
