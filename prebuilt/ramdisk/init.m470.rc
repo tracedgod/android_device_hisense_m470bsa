@@ -11,6 +11,7 @@
 # dopa (2014/01/11) - cleanup
 # dopa (2014/02/11) - KitKat mods
 # dopa (2014/03/12) - charger support
+# dopa (2014/10/24) - revised power mgmt settings
 
 import init.m470.usb.rc
 
@@ -85,7 +86,7 @@ on boot
 
     # bluetooth MAC address programming
     setprop ro.bt.bdaddr_path "/sys/devices/platform/bck/bt_addr"
-    chown bluetooth net_bt_stack ro.bt.bdaddr_path
+    chown bluetooth net_bt_stack /sys/devices/platform/bck/bt_addr
     chown bluetooth net_bt_stack /system/etc/bluetooth
 
     # audio
@@ -111,11 +112,6 @@ on boot
     chown system system /sys/class/graphics/fb0/device/smartdimmer/enable
     chown system system /sys/class/graphics/fb0/device/smartdimmer/aggressiveness
     chmod 0664 /sys/class/graphics/fb0/device/smartdimmer/enable 
-
-# power
-    chown system system /sys/kernel/tegra_cap/core_cap_level
-    chown system system /sys/kernel/tegra_cap/core_cap_state
-    chown system system /sys/module/cpu_tegra/parameters/cpu_user_cap
 
 # Sensor
 #zhaojing add for invensense 5.1.4 sensor
@@ -228,48 +224,66 @@ on boot
     chown system system /sys/bus/iio/devices/iio:device0/in_accel_z_offset
 
 # BB remote file system
-    mkdir /data/rfs
-    mkdir /data/rfs/data
-    mkdir /data/rfs/data/modem
-    mkdir /data/rfs/data/debug
-    chown radio system /data/rfs/data
-    chown radio system /data/rfs/data/modem
-    chown radio log /data/rfs/data/debug
-    symlink /system/vendor/firmware/data/config /data/rfs/data/config
-    symlink /system/vendor/firmware/app /data/rfs/app
-    symlink /mnt/modem/data/factory /data/rfs/data/factory
+#    mkdir /data/rfs
+#    mkdir /data/rfs/data
+#    mkdir /data/rfs/data/modem
+#    mkdir /data/rfs/data/debug
+#    chown radio system /data/rfs/data
+#    chown radio system /data/rfs/data/modem
+#    chown radio log /data/rfs/data/debug
+#    symlink /system/vendor/firmware/data/config /data/rfs/data/config
+#    symlink /system/vendor/firmware/app /data/rfs/app
+#    symlink /mnt/modem/data/factory /data/rfs/data/factory
 
 # BB mapping symbolic name to the logging ttyACM port
-    symlink /dev/ttyACM3 /dev/log_modem
-    chmod 775 /data/rfs/data/debug
+#    symlink /dev/ttyACM3 /dev/log_modem
+#    chmod 775 /data/rfs/data/debug
 
 # GPIO BB access for user radio
-    chown radio system /sys/class/gpio/gpio32/value
-    chown radio system /sys/devices/platform/tegra_usb_modem_power/load_host
+#    chown radio system /sys/class/gpio/gpio32/value
+#    chown radio system /sys/devices/platform/tegra_usb_modem_power/load_host
 
 # Power management settings
     write /sys/module/cpu_tegra3/parameters/no_lp 0
+    write /sys/module/cpu_tegra3/parameters/auto_hotplug 1
+    write /sys/module/cpuidle/parameters/lp2_in_idle 1
+
+    chown system system /sys/kernel/tegra_cap/core_cap_level
+    chown system system /sys/kernel/tegra_cap/core_cap_state
+    chown system system /sys/module/cpu_tegra/parameters/cpu_user_cap
+
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 102000
 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
-
     write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 95
     write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 75
     write /sys/devices/system/cpu/cpufreq/conservative/freq_step 3
 
+    # DoPa (20141024) - only activate the governor on cpu0 to ensure the speed never
+    # exceeds 'scaling_max_freq'; if activated on the secondary cores, all cores will
+    # go to the edp limit (1.5ghz for dopa1) when any of them are brought online
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/boost_factor
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/high_freq_min_delay
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/max_normal_freq
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/midrange_freq
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/midrange_go_maxspeed_load
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/midrange_max_boost
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/sustain_load
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+
     write /sys/devices/system/cpu/cpufreq/interactive/boost_factor 2
     write /sys/devices/system/cpu/cpufreq/interactive/sustain_load 80
-    write /sys/module/cpu_tegra3/parameters/auto_hotplug 1
-    write /sys/module/cpuidle/parameters/lp2_in_idle 1
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/boost_factor
 
 # Increase read ahead size of mmc block devices from default(128) to 1MB
 # Reduces power comsuption during video playback from sdcards
@@ -440,9 +454,10 @@ on property:service.adb.tcp.port=-1
 #    user root
 #    group root
 
-# dopa (2013/09/17) - enable init.d support
+# dopa (2013/10/24) - defer init.d until boot is completed
 service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
-    class core
+    class late_start
+    disabled
     user root
     group root
     oneshot
@@ -453,4 +468,10 @@ service charger /charger
     user root
     group root
     oneshot
+
+# dopa (2013/10/24) - remove the dopa1 kernel's startup speed cap of 1.2ghz
+# so the speed can be controlled via 'cpu0/cpufreq/scaling_max_freq'
+on property:sys.boot_completed=1
+    write /sys/module/cpu_tegra/parameters/cpu_user_cap 0
+    start initd
 

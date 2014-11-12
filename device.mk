@@ -77,7 +77,8 @@ PRODUCT_PACKAGES += \
     nfc_nci.m470 \
     NfcNci \
     Tag \
-    com.android.nfc_extras
+    com.android.nfc_extras \
+    Performance
 
 ###### PhilZ Recovery ######
 
