@@ -51,7 +51,8 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Bootloader & Kernel
 TARGET_NO_BOOTLOADER := true
 TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
-BOARD_KERNEL_CMDLINE := androidboot.selinux=enforcing
+#BOARD_KERNEL_CMDLINE := androidboot.selinux=enforcing
+BOARD_KERNEL_CMDLINE := androidboot.selinux=permissive
 
 BOARD_HAL_STATIC_LIBRARIES := \
     libdumpstate.m470 \
@@ -68,7 +69,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 
 # Recovery
 # comment-out RECOVERY_VARIANT to build the AOSP version of recovery
-RECOVERY_VARIANT := philz
+# RECOVERY_VARIANT := philz
 ifeq ($(RECOVERY_VARIANT),)
     TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
 endif
