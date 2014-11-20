@@ -1,0 +1,3 @@
+# Transitions to seclabel processes in init.rc
+allow init logd:process transition;
+allow init self:capability sys_module;

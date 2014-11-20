@@ -1,4 +1,5 @@
 type sysfs_firmware_writable, fs_type, sysfs_type;
 type sysfs_devices_tegradc, fs_type, sysfs_type;
 
-allow sysfs_devices_system_cpu sysfs:filesystem associate;
+# DoPa (20140527) - for "/mnt/modem/inv_cal_data.bin"
+type sensor_data_file, file_type, data_file_type;

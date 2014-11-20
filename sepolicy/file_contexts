@@ -1,26 +1,34 @@
+/dev/cpu_freq_.*                  u:object_r:nvcpu_device:s0
 /dev/knvmap                       u:object_r:knv_device:s0
+/dev/nvmap                        u:object_r:gpu_device:s0
+/dev/nvhost-.*                    u:object_r:gpu_device:s0
 /dev/ov2655                       u:object_r:camera_device:s0
 /dev/ov5640                       u:object_r:camera_device:s0
 /dev/ttyHS1                       u:object_r:gps_device:s0
 /dev/ttyHS2                       u:object_r:hci_attach_dev:s0
+/dev/bcm2079x                     u:object_r:nfc_device:s0
 
 # DoPa (20140416) - created to split this device out from 'video_device'
 /dev/tegra-throughput	          u:object_r:tegra_throughput_device:s0
 
 /data/tf(/.*)?                    u:object_r:tee_data_file:s0
+/data/nfc(/.*)?                   u:object_r:nfc_data_file:s0
+/mnt/modem                        u:object_r:system_file:s0
+/mnt/modem/inv_cal_data.bin       u:object_r:sensors_data_file:s0
 
-/system/bin/brcm_patchram_plus    u:object_r:hci_attach_exec:s0
-/system/bin/btmacwriter           u:object_r:btmacwriter_exec:s0
-/system/bin/glgps_nvidiaTegra2android    u:object_r:gpsd_exec:s0
-
-/sys/devices/system/cpu(/.*)?     u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/tegradc\.0(/.*)?     u:object_r:sysfs_devices_tegradc:s0
 /sys/devices/tegradc\.1(/.*)?     u:object_r:sysfs_devices_tegradc:s0
 
-# these should be relabeled by the default 'file_contexts' but aren't
-/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/state       u:object_r:sysfs_bluetooth_writable:s0
-/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/type        u:object_r:sysfs_bluetooth_writable:s0
+# DoPa (20140722)
+/sys/kernel/tegra_cap/.*          u:object_r:sysfs_devices_system_cpu:s0
+/sys/module/cpu_tegra/parameters/.* u:object_r:sysfs_devices_system_cpu:s0
 
-/thirdparty(/.*)?                 u:object_r:system_file:s0
-/mnt/modem(/.*)?                  u:object_r:system_file:s0
-/mnt/modem/inv_cal_data.bin       u:object_r:sensors_data_file:s0
+# DoPa (20140529) - corrected BT rfkill path
+/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/state u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/type  u:object_r:sysfs_bluetooth_writable:s0
+
+/system/bin/brcm_patchram_plus          u:object_r:hci_attach_exec:s0
+/system/bin/btmacwriter                 u:object_r:btmacwriter_exec:s0
+/system/bin/glgps_nvidiaTegra2android   u:object_r:gpsd_exec:s0
+/system/bin/logcat                      u:object_r:logcat_exec:s0
+/system/bin/nvcpud                      u:object_r:nvcpud_exec:s0

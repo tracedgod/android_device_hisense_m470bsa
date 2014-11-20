@@ -1,0 +1,9 @@
+type logcat, domain;
+type logcat_exec, exec_type, file_type;
+init_daemon_domain(logcat)
+
+read_logd(logcat)
+write_logd(logcat)
+
+allow logcat system_data_file:dir rw_dir_perms;
+allow logcat system_data_file:file create_file_perms;

@@ -112,18 +112,24 @@ BOARD_SEPOLICY_UNION += \
         drmserver.te \
         file.te \
         file_contexts \
-        fs_use \
         genfs_contexts \
         gpsd.te \
         healthd.te \
+        init.te \
         init_shell.te \
-        keystore.te \
+        kernel.te \
+        logcat.te \
+        logd.te \
         mediaserver.te \
         netd.te \
-        recovery.te \
+        nvcpud.te \
         sensors_config.te \
+        service.te \
+        service_contexts \
         surfaceflinger.te \
-        system.te \
+        system_app.te \
+        system_server.te \
+        ueventd.te \
         untrusted_app.te \
         vold.te \
         zygote.te
