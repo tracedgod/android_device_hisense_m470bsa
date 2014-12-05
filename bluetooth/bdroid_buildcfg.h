@@ -26,5 +26,9 @@
 
 #define BTIF_HF_SERVICES (BTA_HSP_SERVICE_MASK)
 #define BTIF_HF_SERVICE_NAMES  { BTIF_HSAG_SERVICE_NAME, NULL }
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
+
+// exclude BT-LowEnergy protocols/profiles
+#define BLE_INCLUDED FALSE
+#define BTA_GATT_INCLUDED FALSE
+#define SMP_INCLUDED FALSE
 #endif

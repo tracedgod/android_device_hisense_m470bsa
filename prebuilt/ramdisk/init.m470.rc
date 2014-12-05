@@ -83,6 +83,8 @@ on boot
     write /sys/class/rfkill/rfkill0/state 0
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
+    restorecon /sys/class/rfkill/rfkill0/state
+    restorecon /sys/class/rfkill/rfkill0/type
 
     # bluetooth MAC address programming
     setprop ro.bt.bdaddr_path "/sys/devices/platform/bck/bt_addr"

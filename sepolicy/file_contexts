@@ -20,12 +20,12 @@
 /sys/devices/tegradc\.1(/.*)?     u:object_r:sysfs_devices_tegradc:s0
 
 # DoPa (20140722)
-/sys/kernel/tegra_cap/.*          u:object_r:sysfs_devices_system_cpu:s0
-/sys/module/cpu_tegra/parameters/.* u:object_r:sysfs_devices_system_cpu:s0
+/sys/kernel/tegra_cap(/.*)?             u:object_r:sysfs_devices_system_cpu:s0
+/sys/module/cpu_tegra/parameters(/.*)?  u:object_r:sysfs_devices_system_cpu:s0
 
 # DoPa (20140529) - corrected BT rfkill path
-/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/state u:object_r:sysfs_bluetooth_writable:s0
-/sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/type  u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/state         u:object_r:sysfs_bluetooth_writable:s0
+/sys/class/rfkill/rfkill0/type          u:object_r:sysfs_bluetooth_writable:s0
 
 /system/bin/brcm_patchram_plus          u:object_r:hci_attach_exec:s0
 /system/bin/btmacwriter                 u:object_r:btmacwriter_exec:s0
