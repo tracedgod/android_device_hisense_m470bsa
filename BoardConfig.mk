@@ -68,7 +68,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 
 # Recovery
 # comment-out RECOVERY_VARIANT to build the AOSP version of recovery
-RECOVERY_VARIANT := philz
+# RECOVERY_VARIANT := philz
 ifeq ($(RECOVERY_VARIANT),)
     TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
 endif
