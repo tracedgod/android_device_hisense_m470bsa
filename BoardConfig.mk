@@ -123,6 +123,7 @@ BOARD_SEPOLICY_UNION += \
         mediaserver.te \
         netd.te \
         nvcpud.te \
+        sdcardd.te \
         sensors_config.te \
         service.te \
         service_contexts \
