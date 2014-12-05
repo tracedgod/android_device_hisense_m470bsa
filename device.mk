@@ -78,7 +78,6 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
     com.android.nfc_extras \
-    libbt-vendor \
     Performance
 
 ###### PhilZ Recovery ######
