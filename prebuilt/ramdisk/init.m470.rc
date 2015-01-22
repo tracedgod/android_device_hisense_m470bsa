@@ -83,8 +83,6 @@ on boot
     write /sys/class/rfkill/rfkill0/state 0
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    restorecon /sys/class/rfkill/rfkill0/state
-    restorecon /sys/class/rfkill/rfkill0/type
 
     # bluetooth MAC address programming
     setprop ro.bt.bdaddr_path "/sys/devices/platform/bck/bt_addr"
@@ -477,7 +475,15 @@ service charger /charger
 
 # dopa (2013/10/24) - remove the dopa1 kernel's startup speed cap of 1.2ghz
 # so the speed can be controlled via 'cpu0/cpufreq/scaling_max_freq'
+# DoPa (2014/12/26) - various SELinux contexts don't get set properly
+# in some cases such as the initial boot-up after installation, so force them
 on property:sys.boot_completed=1
+    restorecon_recursive /sys/kernel/tegra_cap
+    restorecon_recursive /sys/module/cpu_tegra/parameters
+    restorecon_recursive /sys/devices/system/cpu/cpu0/cpufreq
+    restorecon_recursive /sys/class/graphics/fb0/device/smartdimmer
+    restorecon /sys/class/rfkill/rfkill0/state
+    restorecon /sys/class/rfkill/rfkill0/type
     write /sys/module/cpu_tegra/parameters/cpu_user_cap 0
     start initd
 
