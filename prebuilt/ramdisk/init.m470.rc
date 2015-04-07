@@ -12,6 +12,8 @@
 # dopa (2014/02/11) - KitKat mods
 # dopa (2014/03/12) - charger support
 # dopa (2014/10/24) - revised power mgmt settings
+# dopa (2014/12/26) - restore selected SELinux contexts
+# dopa (2014/04/06) - add KSM, remove baseband entries
 
 import init.m470.usb.rc
 
@@ -222,26 +224,6 @@ on boot
     chown system system /sys/bus/iio/devices/iio:device0/in_accel_x_offset
     chown system system /sys/bus/iio/devices/iio:device0/in_accel_y_offset
     chown system system /sys/bus/iio/devices/iio:device0/in_accel_z_offset
-
-# BB remote file system
-#    mkdir /data/rfs
-#    mkdir /data/rfs/data
-#    mkdir /data/rfs/data/modem
-#    mkdir /data/rfs/data/debug
-#    chown radio system /data/rfs/data
-#    chown radio system /data/rfs/data/modem
-#    chown radio log /data/rfs/data/debug
-#    symlink /system/vendor/firmware/data/config /data/rfs/data/config
-#    symlink /system/vendor/firmware/app /data/rfs/app
-#    symlink /mnt/modem/data/factory /data/rfs/data/factory
-
-# BB mapping symbolic name to the logging ttyACM port
-#    symlink /dev/ttyACM3 /dev/log_modem
-#    chmod 775 /data/rfs/data/debug
-
-# GPIO BB access for user radio
-#    chown radio system /sys/class/gpio/gpio32/value
-#    chown radio system /sys/devices/platform/tegra_usb_modem_power/load_host
 
 # Power management settings
     write /sys/module/cpu_tegra3/parameters/no_lp 0
@@ -474,10 +456,9 @@ service charger /charger
     oneshot
 
 # dopa (2013/10/24) - remove the dopa1 kernel's startup speed cap of 1.2ghz
-# so the speed can be controlled via 'cpu0/cpufreq/scaling_max_freq'
-# DoPa (2014/12/26) - various SELinux contexts don't get set properly
-# in some cases such as the initial boot-up after installation, so force them
+# dopa (2014/12/26) - restore SELinux contexts that don't get set properly
 on property:sys.boot_completed=1
+    restorecon_recursive /data/media/0/clockworkmod
     restorecon_recursive /sys/kernel/tegra_cap
     restorecon_recursive /sys/module/cpu_tegra/parameters
     restorecon_recursive /sys/devices/system/cpu/cpu0/cpufreq
@@ -485,5 +466,7 @@ on property:sys.boot_completed=1
     restorecon /sys/class/rfkill/rfkill0/state
     restorecon /sys/class/rfkill/rfkill0/type
     write /sys/module/cpu_tegra/parameters/cpu_user_cap 0
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
     start initd
 
