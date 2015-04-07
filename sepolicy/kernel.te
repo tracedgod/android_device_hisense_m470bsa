@@ -1,1 +1,4 @@
 allow kernel sysfs_devices_tegradc:{ dir file lnk_file } relabelto;
+
+# DoPa (20150325) - needed to get wifi mac address from BCK partition
+allow kernel block_device:blk_file { open read };
