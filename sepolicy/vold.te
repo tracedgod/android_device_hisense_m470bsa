@@ -1,2 +1,8 @@
 allow vold fuse_device:chr_file rw_file_perms;
 allow vold self:capability { setuid setgid };
+
+# DoPa (20150325) - use a special type when mounting SDcards
+# formatted with ext4 or f2fs (from CM12) - requires changing
+# a neverallow rule in domain.te to permit 'relabelto'
+allow vold sdcard_posix:filesystem { relabelto relabelfrom };
+allow vold labeledfs:filesystem { relabelfrom };
