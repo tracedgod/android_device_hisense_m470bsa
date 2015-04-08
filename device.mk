@@ -142,7 +142,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/hisense/m470/prebuilt/kernel/modules/baseband_usb_chr.ko:system/lib/modules/baseband_usb_chr.ko \
     device/hisense/m470/prebuilt/kernel/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
     device/hisense/m470/prebuilt/kernel/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
     device/hisense/m470/prebuilt/kernel/modules/hid-wiimote.ko:system/lib/modules/hid-wiimote.ko \
@@ -150,8 +149,6 @@ PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/mac80211.ko:system/lib/modules/mac80211.ko \
     device/hisense/m470/prebuilt/kernel/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
     device/hisense/m470/prebuilt/kernel/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
-    device/hisense/m470/prebuilt/kernel/modules/tcrypt.ko:system/lib/modules/tcrypt.ko
-
 
 ### Ramdisk ###
 PRODUCT_COPY_FILES += \
