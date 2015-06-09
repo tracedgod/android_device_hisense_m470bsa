@@ -17,8 +17,10 @@
 #                     all files pulled from the tablet (except ramdisk files)
 #                     are listed in device-vendor.mk
 
-PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
+PRODUCT_AAPT_CONFIG := normal large
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
+# A list of dpis to select prebuilt apk, in precedence order.
+PRODUCT_AAPT_PREBUILT_DPI := tvdpi hdpi
 
 PRODUCT_CHARACTERISTICS := tablet
 
@@ -30,9 +32,9 @@ PRODUCT_PROPERTY_OVERRIDES := \
     dalvik.vm.dex2oat-filter=everything \
     drm.service.enabled=true \
     ro.carrier=wifi-only \
+    ro.radio.noril=true \
     tf.enable=y \
-    wifi.interface=wlan0 \
-    wifi.supplicant_scan_interval=15
+    wifi.interface=wlan0
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
@@ -149,7 +151,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/kernel/modules/bcmdhd.ko:system/lib/modules/bcmdhd.ko \
     device/hisense/m470/prebuilt/kernel/modules/cfg80211.ko:system/lib/modules/cfg80211.ko \
-    device/hisense/m470/prebuilt/kernel/modules/hid-wiimote.ko:system/lib/modules/hid-wiimote.ko \
     device/hisense/m470/prebuilt/kernel/modules/lib80211.ko:system/lib/modules/lib80211.ko \
     device/hisense/m470/prebuilt/kernel/modules/mac80211.ko:system/lib/modules/mac80211.ko \
     device/hisense/m470/prebuilt/kernel/modules/raw_ip_net.ko:system/lib/modules/raw_ip_net.ko \
