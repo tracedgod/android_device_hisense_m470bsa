@@ -22,7 +22,12 @@ PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
 PRODUCT_CHARACTERISTICS := tablet
 
+PRODUCT_DEX_PREOPT_BOOT_FLAGS := --compiler-filter=everything
+PRODUCT_DEX_PREOPT_DEFAULT_FLAGS := --compiler-filter=everything
+
 PRODUCT_PROPERTY_OVERRIDES := \
+    dalvik.vm.image-dex2oat-filter=everything \
+    dalvik.vm.dex2oat-filter=everything \
     drm.service.enabled=true \
     ro.carrier=wifi-only \
     tf.enable=y \
