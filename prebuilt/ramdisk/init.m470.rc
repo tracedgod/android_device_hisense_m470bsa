@@ -14,7 +14,7 @@
 # dopa (2014/10/24) - revised power mgmt settings
 # dopa (2014/12/26) - restore selected SELinux contexts
 # dopa (2014/04/06) - add KSM, remove baseband entries
-# dopa (2015/06/17) - update WPA & DHCP entries
+# dopa (2015/06/17) - update WPA & DHCP entries, remove nvcpud
 
 import init.m470.usb.rc
 
@@ -291,10 +291,6 @@ on boot
     chown gps system /data/gps/
     chown gps system /dev/ttyHS1
 
-# Enable NvCpuD, and set it to never poll config again
-    setprop nvcpud.enabled true
-    setprop nvcpud.config_refresh_ms -1
-
 # dopa (2014/03/12) - use powersave governor when when "off" but attached to AC
 on charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
@@ -428,12 +424,6 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1
 service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
-
-service nvcpud /system/bin/nvcpud
-    class main
-    user root
-    group root
-    seclabel u:r:nvcpud:s0
 
 # dopa (2013/09/17) - enable adb over network (from CM)
 on property:service.adb.tcp.port=5555
