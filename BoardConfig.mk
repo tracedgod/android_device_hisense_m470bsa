@@ -70,6 +70,9 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/hisense/m470/bluetooth
 
+# Crypto
+BOARD_HAS_TF_CRYPTO_SST := true
+
 # Recovery
 # comment-out RECOVERY_VARIANT to build the AOSP version of recovery
 # RECOVERY_VARIANT := philz
@@ -122,6 +125,7 @@ BOARD_SEPOLICY_UNION += \
         init.te \
         init_shell.te \
         kernel.te \
+        keystore.te \
         logcat.te \
         logd.te \
         mediaserver.te \
