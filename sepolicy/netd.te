@@ -2,3 +2,4 @@
 # it may not be the most appropriate solution
 
 allow netd kernel:system module_request;
+allow netd self:capability sys_module;
