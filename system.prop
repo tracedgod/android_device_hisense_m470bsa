@@ -6,6 +6,7 @@ agpsd.dev_path=/dev/ttyHS1
 debug.nfc.fw_download=false
 debug.nfc.se=false
 
+persist.sys.strictmode.disable=true
 persist.tegra.nvmmlite=1
 ro.opengles.version = 131072
 # set default lcd density to TVDPI
