@@ -29,7 +29,7 @@
 
     <!-- The default tiles to display in QuickSettings -->
     <string name="quick_settings_tiles_default" translatable="false">
-        wifi,bt,inversion,airplane,rotation,flashlight,location
+        wifi,bt,inversion,airplane,rotation,flashlight,location,cast
     </string>
 
     <!-- Defines the implementation of the velocity tracker to be used for the panel expansion. Can
