@@ -56,11 +56,9 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.r_submix.default \
     audio.usb.default \
-    bttest \
     charger \
     charger_res_images \
     com.android.future.usb.accessory \
-    hcitool \
     keystore.m470 \
     l2ping \
     libdumpstate.m470 \
