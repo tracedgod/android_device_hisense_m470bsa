@@ -31,6 +31,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     dalvik.vm.image-dex2oat-filter=everything \
     dalvik.vm.dex2oat-filter=everything \
     drm.service.enabled=true \
+    persist.sys.media.legacy-drm=true \
     ro.carrier=wifi-only \
     ro.radio.noril=true \
     tf.enable=y \
