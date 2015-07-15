@@ -433,12 +433,13 @@ on property:service.adb.tcp.port=-1
     stop adbd
     start adbd
 
-# dopa (2014/08/27) - disable logcat daemon
-#service logcat /system/bin/logcat -r1000 -n 4 -v time -f /data/local/logcat.log
-#    class main
-#    user root
-#    group root
-#    seclabel u:r:logcat:s0
+# dopa (2015/07/14) - enable logcat to be started on demand
+service logcat /system/bin/logcat -r1000 -n 4 -v threadtime -f /data/local/logcat.log
+    class main
+    user root
+    group root
+    disabled
+    seclabel u:r:logcat:s0
 
 # dopa (2013/10/24) - defer init.d until boot is completed
 service initd /system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d
