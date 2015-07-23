@@ -90,7 +90,6 @@ on boot
     # bluetooth MAC address programming
     setprop ro.bt.bdaddr_path "/sys/devices/platform/bck/bt_addr"
     chown bluetooth net_bt_stack /sys/devices/platform/bck/bt_addr
-    chown bluetooth net_bt_stack /system/etc/bluetooth
 
     # audio
     chmod 0664 /sys/power/suspend/mode
@@ -122,7 +121,6 @@ on boot
     chown system system /sys/devices/platform/tegra-i2c.0/i2c-0/0-0044/isl29023/mod
     chmod 0644 /dev/iio:device0
     chmod 0644 /sys/bus/iio/devices/trigger0/name
-    chmod 0644 /sys/bus/iio/devices/iio:device0/accl_bias
     chmod 0644 /sys/bus/iio/devices/iio:device0/accl_enable
     chmod 0644 /sys/bus/iio/devices/iio:device0/accl_matrix
     chmod 0644 /sys/bus/iio/devices/iio:device0/buffer/length
@@ -141,7 +139,6 @@ on boot
     chmod 0644 /sys/bus/iio/devices/iio:device0/in_accel_scale
     chmod 0644 /sys/bus/iio/devices/iio:device0/in_anglvel_scale
     chmod 0644 /sys/bus/iio/devices/iio:device0/in_magn_scale
-    chmod 0644 /sys/bus/iio/devices/iio:device0/key
     chmod 0644 /sys/bus/iio/devices/iio:device0/power_state
     chmod 0644 /sys/bus/iio/devices/iio:device0/quaternion_on
     chmod 0644 /sys/bus/iio/devices/iio:device0/sampling_frequency
@@ -175,7 +172,6 @@ on boot
 
     chown system system /dev/iio:device0
     chown system system /sys/bus/iio/devices/trigger0/name
-    chown system system /sys/bus/iio/devices/iio:device0/accl_bias
     chown system system /sys/bus/iio/devices/iio:device0/accl_enable
     chown system system /sys/bus/iio/devices/iio:device0/accl_matrix
     chown system system /sys/bus/iio/devices/iio:device0/buffer/length
@@ -194,7 +190,6 @@ on boot
     chown system system /sys/bus/iio/devices/iio:device0/in_accel_scale
     chown system system /sys/bus/iio/devices/iio:device0/in_anglvel_scale
     chown system system /sys/bus/iio/devices/iio:device0/in_magn_scale
-    chown system system /sys/bus/iio/devices/iio:device0/key
     chown system system /sys/bus/iio/devices/iio:device0/power_state
     chown system system /sys/bus/iio/devices/iio:device0/quaternion_on
     chown system system /sys/bus/iio/devices/iio:device0/sampling_frequency
@@ -278,8 +273,8 @@ on boot
 
 # GPS init
     write /sys/class/gpio/export 120
-    write /sys/class/gpio/gpio120/value 0
     write /sys/class/gpio/gpio120/direction out
+    write /sys/class/gpio/gpio120/value 0
     chown gps system /sys/class/gpio/gpio120/value
     chmod 0644 /sys/class/gpio/gpio120/value
     write /sys/class/gpio/export 135
