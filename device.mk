@@ -80,7 +80,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libnfc-nci \
-    nfc_nci.m470 \
+    nfc_nci.bcm2079x.default \
     NfcNci \
     Tag \
     com.android.nfc_extras \
