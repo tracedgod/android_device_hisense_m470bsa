@@ -1,7 +1,3 @@
-# Icera agpsd
-agpsd.lib_path=/system/lib/libagps-brcm4751.so
-agpsd.dev_path=/dev/ttyHS1
-
 #NFC
 debug.nfc.fw_download=false
 debug.nfc.se=false
