@@ -2,7 +2,7 @@ type sysfs_firmware_writable, fs_type, sysfs_type;
 type sysfs_devices_tegradc, fs_type, sysfs_type;
 
 # DoPa (20140527) - for "/mnt/modem/inv_cal_data.bin"
-type sensor_data_file, file_type, data_file_type;
+type sensors_data_file, file_type, data_file_type;
 
 # DoPa (20150325) - used for SDcards formatted with ext4 or f2fs (from CM12)
 type sdcard_posix, sdcard_type, fs_type, mlstrustedobject;

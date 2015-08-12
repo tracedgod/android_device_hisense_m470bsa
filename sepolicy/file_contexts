@@ -13,7 +13,6 @@
 
 /data/tf(/.*)?                    u:object_r:tee_data_file:s0
 /data/nfc(/.*)?                   u:object_r:nfc_data_file:s0
-/mnt/modem                        u:object_r:system_file:s0
 /mnt/modem/inv_cal_data.bin       u:object_r:sensors_data_file:s0
 
 /sys/devices/tegradc\.0(/.*)?     u:object_r:sysfs_devices_tegradc:s0
