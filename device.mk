@@ -81,29 +81,6 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     Performance
 
-###### PhilZ Recovery ######
-
-ifeq ($(RECOVERY_VARIANT),philz)
-
-PRODUCT_PACKAGES += \
-    bootscripts_mnt.sh \
-    e2fsck_recovery \
-    killrecovery.sh \
-    minivold \
-    mke2fs_recovery \
-    mkntfs.recovery \
-    mount.exfat_static \
-    mount.ntfs-3g \
-    parted \
-    raw-backup.sh \
-    sdparted \
-    stitch.png \
-    tune2fs_recovery \
-    virtual_keys.png \
-    zip
-
-endif
-
 ###### AOSP ######
 
 ### Permissions ###
@@ -172,6 +149,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     device/hisense/m470/prebuilt/etc/init.d/00banner:system/etc/init.d/00banner
+
+PRODUCT_COPY_FILES += \
+    device/hisense/m470/prebuilt/twrp/twrp.fstab:recovery/root/etc/twrp.fstab
 
 ### Blobs ###
 $(call inherit-product, vendor/hisense/m470/device-vendor.mk)

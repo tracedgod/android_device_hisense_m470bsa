@@ -43,7 +43,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 805306368
 #BOARD_CACHEIMAGE_PARTITION_SIZE := 536870912
 #BOARD_USERDATAIMAGE_PARTITION_SIZE := 5972672512
 
-# both PhilzTouch and patches to AOSP Recovery use TARGET_USERIMAGES_USE_F2FS
+# patches to AOSP Recovery use TARGET_USERIMAGES_USE_F2FS
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_FLASH_BLOCK_SIZE := 4096
@@ -75,11 +75,26 @@ BOARD_HAS_TF_CRYPTO_SST := true
 
 # Recovery
 # comment-out RECOVERY_VARIANT to build the AOSP version of recovery
-# RECOVERY_VARIANT := philz
-ifeq ($(RECOVERY_VARIANT),)
+RECOVERY_VARIANT := twrp
+#
+ifeq ($(RECOVERY_VARIANT),twrp)
+    TARGET_RECOVERY_INITRC := device/hisense/m470/prebuilt/twrp/init.rc
+    TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+    RECOVERY_SDCARD_ON_DATA := true
+    TW_EXCLUDE_DEFAULT_USB_INIT := true
+    TW_THEME := portrait_hdpi
+    TW_EXCLUDE_SUPERSU := true
+    TW_NO_EXFAT_FUSE := true
+    TW_INCLUDE_NTFS_3G := true
+    TW_INCLUDE_L_CRYPTO := true
+    # re-include to update path to recovery_variant
+    include $(BUILD_SYSTEM)/pathmap.mk
+else
     TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
 endif
-TARGET_RECOVERY_FSTAB = device/hisense/m470/prebuilt/ramdisk/fstab.m470
+# the OTA packaging scripts don't like twrp.fstab so we have to include
+# the standard fstab regardless of which recovery is being built
+TARGET_RECOVERY_FSTAB := device/hisense/m470/prebuilt/ramdisk/fstab.m470
 
 # Sensors
 BOARD_USES_GENERIC_INVENSENSE := false
