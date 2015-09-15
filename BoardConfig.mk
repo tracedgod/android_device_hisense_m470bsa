@@ -48,10 +48,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-# enable ART odex'ing
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_PIC := true
-
 # Bootloader & Kernel
 TARGET_NO_BOOTLOADER := true
 TARGET_PREBUILT_KERNEL := device/hisense/m470/prebuilt/kernel/kernel
