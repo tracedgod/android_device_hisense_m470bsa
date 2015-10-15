@@ -1,2 +1,5 @@
 # Transitions to seclabel processes in init.rc
 allow init self:capability sys_module;
+
+# symlink /sdcard /mnt/sdcard
+allow init tmpfs:lnk_file create;

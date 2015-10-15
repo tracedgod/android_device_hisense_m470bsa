@@ -15,6 +15,7 @@
 # dopa (2014/12/26) - restore selected SELinux contexts
 # dopa (2014/04/06) - add KSM, remove baseband entries
 # dopa (2015/06/17) - update WPA & DHCP entries, remove nvcpud
+# dopa (2015/10/14) - remove obsolete external storage entries
 
 import init.m470.usb.rc
 
@@ -23,27 +24,8 @@ on early-init
     write /sys/class/firmware/timeout 5
 
 on init
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/emulated 0555 root root
-    mkdir /storage/sdcard1 0555 root root
-    mkdir /storage/usbdisk 0700 root root
-
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
     # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /storage/sdcard1 /sdcard2
-    symlink /storage/sdcard1 /mnt/sdcard2
-    symlink /storage/usbdisk /mnt/usbdisk
-    symlink /mnt/usbdisk /usbdisk
+    symlink /sdcard /mnt/sdcard
 
     mkdir /thirdparty 0666 system system
 
@@ -403,19 +385,6 @@ service setup_fs /system/bin/setup_fs \
     group root
     oneshot
     seclabel u:r:init:s0
-
-# Create emulated storage
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
-
-# FUSE sdcard daemon for rich permissions (runs as media_rw)
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
-    disabled
-
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
 
 # dopa (2013/09/17) - enable adb over network (from CM)
 on property:service.adb.tcp.port=5555

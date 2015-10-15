@@ -25,5 +25,5 @@
 /dev/block/platform/sdhci-tegra.3/by-name/MDM   /mnt/modem   f2fs   noatime,nosuid,nodev,discard,inline_xattr,errors=recover    wait
 /dev/block/platform/sdhci-tegra.3/by-name/THD   /thirdparty  ext4   noatime,nosuid,nodev,nomblk_io_submit,errors=remount-ro     wait
 /dev/block/platform/sdhci-tegra.3/by-name/THD   /thirdparty  f2fs   noatime,nosuid,nodev,discard,inline_xattr,errors=recover    wait
-/devices/platform/sdhci-tegra.0/mmc_host/mmc1   auto         auto   defaults                                                    voldmanaged=sdcard1:auto
-/devices/platform/tegra-ehci                    auto         auto   defaults                                                    voldmanaged=usbdisk:auto
+/devices/platform/sdhci-tegra.0/mmc_host/mmc1/* auto         auto   defaults                                                    voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/tegra-ehci.0/*                auto         auto   defaults                                                    voldmanaged=usbdisk:auto,encryptable=userdata
