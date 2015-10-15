@@ -37,4 +37,6 @@
 /system/bin/btmacwriter                 u:object_r:btmacwriter_exec:s0
 /system/bin/fsck.exfat                  u:object_r:fsck_exec:s0
 /system/bin/glgps_nvidiaTegra2android   u:object_r:gpsd_exec:s0
+/system/bin/ntfsfix                     u:object_r:fsck_exec:s0
+/system/bin/ntfs-3g                     u:object_r:ntfs_3g_exec:s0
 /system/bin/setup_fs                    u:object_r:setup_fs_exec:s0

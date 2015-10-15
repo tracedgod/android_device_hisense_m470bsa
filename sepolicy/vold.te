@@ -5,3 +5,6 @@ allow vold fuse_device:chr_file rw_file_perms;
 # changing a neverallow rule in domain.te to permit 'relabelto'
 allow vold labeledfs:filesystem { relabelfrom };
 allow vold sdcard_type:filesystem { relabelto relabelfrom };
+
+domain_auto_trans(vold, ntfs_3g_exec, ntfs_3g);
+allow vold ntfs_3g_exec:file rx_file_perms;

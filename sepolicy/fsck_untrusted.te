@@ -1,0 +1,4 @@
+# ntfsfix insists on looking at each partition
+allow fsck_untrusted block_device:dir getattr;
+# ntfsfix has to mount its volume
+allow fsck_untrusted self:capability sys_admin;

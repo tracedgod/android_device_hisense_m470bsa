@@ -1,0 +1,15 @@
+type ntfs_3g, domain;
+type ntfs_3g_exec, exec_type, file_type;
+
+allow ntfs_3g self:capability { setuid setgid dac_override sys_admin sys_resource };
+allow ntfs_3g block_device:dir { getattr search };
+allow ntfs_3g vold_device:blk_file rw_file_perms;
+allow ntfs_3g fuse_device:chr_file rw_file_perms;
+allow ntfs_3g fuse:filesystem { mount unmount };
+allow ntfs_3g mnt_media_rw_stub_file:dir { r_dir_perms mounton };
+allow ntfs_3g mnt_media_rw_file:dir r_dir_perms;
+
+# allow stdin/out back to vold
+allow ntfs_3g vold:fd use;
+allow ntfs_3g vold:fifo_file { read write getattr };
+allow ntfs_3g devpts:chr_file  { read write ioctl getattr };
