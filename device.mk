@@ -32,12 +32,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
     tf.enable=y \
     wifi.interface=wlan0
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 include frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk
-
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/hisense/m470/overlay
