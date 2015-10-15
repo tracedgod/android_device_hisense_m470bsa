@@ -1,3 +1,6 @@
 type knv_device, dev_type;
 type nvcpu_device, dev_type;
 type tegra_throughput_device, dev_type;
+
+# Modem block device mounted on /mnt/modem
+type modem_block_device, dev_type;
