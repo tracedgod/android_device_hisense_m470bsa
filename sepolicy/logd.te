@@ -1,2 +1,0 @@
-# needed when 'init' starts 'logd'
-allow logd logd_exec:file entrypoint;
