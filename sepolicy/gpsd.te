@@ -1,1 +1,3 @@
-allow gpsd self:process execmem;
+# this requires a patch to sepolicy/domain.te
+# to override a neverallow rule for execmod
+allow gpsd gpsd_exec:file execmod;

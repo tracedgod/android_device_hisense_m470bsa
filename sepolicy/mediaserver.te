@@ -3,4 +3,4 @@ allow mediaserver self:netlink_kobject_uevent_socket create_socket_perms;
 
 # Communicate over a socket created by system-server.
 allow mediaserver system_server:unix_stream_socket { read write setopt };
-
+allow mediaserver system_file:file execmod;
