@@ -28,9 +28,9 @@ on init
     symlink /sdcard /mnt/sdcard
 
     mkdir /thirdparty 0666 system system
+    mkdir /modem 0770 radio system
 
 on fs
-    mkdir /mnt/modem 0770 radio system
     mount_all /fstab.m470
     setprop ro.crypto.fuse_sdcard true
 
