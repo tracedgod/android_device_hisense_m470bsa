@@ -118,33 +118,3 @@ WIFI_DRIVER_MODULE_ARG      := "firmware_path=/system/vendor/firmware/bcm4330/fw
 BOARD_SEPOLICY_DIRS += \
         device/hisense/m470/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-        app.te \
-        btmacwriter.te \
-        device.te \
-        drmserver.te \
-        file.te \
-        file_contexts \
-        genfs_contexts \
-        gpsd.te \
-        healthd.te \
-        init.te \
-        init_shell.te \
-        kernel.te \
-        keystore.te \
-        logcat.te \
-        logd.te \
-        mediaserver.te \
-        netd.te \
-        nvcpud.te \
-        sdcardd.te \
-        service.te \
-        service_contexts \
-        surfaceflinger.te \
-        system_app.te \
-        system_server.te \
-        ueventd.te \
-        untrusted_app.te \
-        vold.te \
-        zygote.te
-

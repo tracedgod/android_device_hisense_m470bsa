@@ -350,7 +350,6 @@ service btmacwriter /system/bin/btmacwriter
     user bluetooth
     group bluetooth net_bt_admin
     oneshot
-    seclabel u:r:btmacwriter:s0
 
 #BCM
 service hciattach /system/bin/brcm_patchram_plus -d --enable_hci --tosleep 50000 --baudrate 3000000 --patchram /etc/firmware/bcm4330.hcd --enable_lpm /dev/ttyHS2

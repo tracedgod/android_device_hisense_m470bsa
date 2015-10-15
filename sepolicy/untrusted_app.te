@@ -1,8 +1,2 @@
-# DoPa (20140416) - everything below was added to fix error messages;
-# they may not be the most appropriate solutions
-
-# several apps check the attr of '/data/app'
-allow untrusted_app apk_data_file:dir getattr;
-
 # allow apps to check for an 'su' binary
 allow untrusted_app su_exec:file getattr;
