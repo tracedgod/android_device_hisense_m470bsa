@@ -60,7 +60,7 @@ PRODUCT_PACKAGES += \
     updater \
     setup_fs \
     busybox \
-    exfat \
+    fsck.exfat \
     ntfs-3g \
     ntfsfix \
     mkntfs \
@@ -74,7 +74,9 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
     com.android.nfc_extras \
-    Performance
+    Performance \
+    Launcher3 \
+    Terminal
 
 ###### AOSP ######
 
