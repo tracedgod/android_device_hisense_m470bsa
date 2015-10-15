@@ -85,9 +85,8 @@ ifeq ($(RECOVERY_VARIANT),twrp)
     TW_INCLUDE_L_CRYPTO := true
     # re-include to update path to recovery_variant
     include $(BUILD_SYSTEM)/pathmap.mk
-else
-    TARGET_RECOVERY_UI_LIB := librecovery_ui_m470
 endif
+
 # the OTA packaging scripts don't like twrp.fstab so we have to include
 # the standard fstab regardless of which recovery is being built
 TARGET_RECOVERY_FSTAB := device/hisense/m470/prebuilt/ramdisk/fstab.m470
