@@ -1,5 +1,11 @@
-# Transitions to seclabel processes in init.rc
+# insmod wifi modules
 allow init self:capability sys_module;
+
+# chown/chmod ddim
+allow init sysfs_devices_tegradc:{ file lnk_file } {read getattr};
+
+# chown/chmod rfkill
+allow init sysfs_bluetooth_writable:file getattr;
 
 # symlink /sdcard /mnt/sdcard
 allow init tmpfs:lnk_file create;
