@@ -71,7 +71,7 @@ BOARD_HAS_TF_CRYPTO_SST := true
 
 # Recovery
 # comment-out RECOVERY_VARIANT to build the AOSP version of recovery
-RECOVERY_VARIANT := twrp
+#RECOVERY_VARIANT := twrp
 #
 ifeq ($(RECOVERY_VARIANT),twrp)
     TARGET_RECOVERY_INITRC := device/hisense/m470/prebuilt/twrp/init.rc
