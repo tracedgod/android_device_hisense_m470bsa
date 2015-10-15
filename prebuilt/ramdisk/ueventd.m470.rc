@@ -44,3 +44,7 @@
 /dev/ion	0666	system	system
 /dev/bcm2079x	0660	nfc	nfc
 /dev/timerinfo	0444	system	system
+/data/gps/.gps.interface.pipe.to_gpsd	666	gps	system
+/data/gps/.gps.interface.pipe.to_jni	666	gps	system
+/data/gps/.gpsd.lock	666	gps	system
+/data/gps/glgpsctrl	666	gps	system
