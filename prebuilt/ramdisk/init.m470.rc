@@ -383,7 +383,6 @@ service setup_fs /system/bin/setup_fs \
     user root
     group root
     oneshot
-    seclabel u:r:init:s0
 
 # dopa (2013/09/17) - enable adb over network (from CM)
 on property:service.adb.tcp.port=5555
