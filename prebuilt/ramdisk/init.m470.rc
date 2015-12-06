@@ -16,6 +16,7 @@
 # dopa (2014/04/06) - add KSM, remove baseband entries
 # dopa (2015/06/17) - update WPA & DHCP entries, remove nvcpud
 # dopa (2015/10/14) - remove obsolete external storage entries
+# DoPa (2015/12/05) - use 'thirdparty' partition as swap space
 
 import init.m470.usb.rc
 
@@ -27,11 +28,11 @@ on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
 
-    mkdir /thirdparty 0666 system system
     mkdir /modem 0770 radio system
 
 on fs
     mount_all /fstab.m470
+    swapon_all /fstab.m470
     setprop ro.crypto.fuse_sdcard true
 
 on post-fs-data
