@@ -61,9 +61,9 @@ PRODUCT_PACKAGES += \
     setup_fs \
     busybox \
     fsck.exfat \
-    ntfs-3g \
-    ntfsfix \
-    mkntfs \
+    mount.ntfs \
+    fsck.ntfs \
+    mkfs.ntfs \
     e2fsck \
     mkfs.f2fs \
     fsck.f2fs
