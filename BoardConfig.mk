@@ -71,12 +71,15 @@ BOARD_HAS_TF_CRYPTO_SST := true
 
 # Recovery
 # comment-out RECOVERY_VARIANT to build the AOSP version of recovery
-#RECOVERY_VARIANT := twrp
+RECOVERY_VARIANT := twrp
 #
 ifeq ($(RECOVERY_VARIANT),twrp)
     TARGET_RECOVERY_INITRC := device/hisense/m470/prebuilt/twrp/init.rc
     TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
     RECOVERY_SDCARD_ON_DATA := true
+    BOARD_UMS_LUNFILE := /sys/devices/platform/tegra-udc.0/gadget/lun%d/file
+    TWRP_INCLUDE_LOGCAT := true
+    TARGET_USES_LOGD := true
     TW_EXCLUDE_DEFAULT_USB_INIT := true
     TW_THEME := portrait_hdpi
     TW_EXCLUDE_SUPERSU := true
