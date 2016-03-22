@@ -17,6 +17,7 @@
 # dopa (2015/06/17) - update WPA & DHCP entries, remove nvcpud
 # dopa (2015/10/14) - remove obsolete external storage entries
 # DoPa (2015/12/05) - use 'thirdparty' partition as swap space
+# DoPa (2016/03/04) - set swap on/off via a 'dopa.' system property
 
 import init.m470.usb.rc
 
@@ -32,7 +33,6 @@ on init
 
 on fs
     mount_all /fstab.m470
-    swapon_all /fstab.m470
     setprop ro.crypto.fuse_sdcard true
 
 on post-fs-data
@@ -415,6 +415,21 @@ service charger /charger
     user root
     group root
     oneshot
+
+# DoPa (2016/03/04) - set swap on/off via a 'dopa.' system property
+service swap_off /system/bin/swapoff /dev/block/platform/sdhci-tegra.3/by-name/THD
+    class late_start
+    disabled
+    user root
+    group root
+    oneshot
+    seclabel u:r:init:s0
+
+on property:dopa.swap.enable=1
+    swapon_all /fstab.m470
+
+on property:dopa.swap.enable=0
+    start swap_off
 
 # dopa (2013/10/24) - remove the dopa1 kernel's startup speed cap of 1.2ghz
 # dopa (2014/12/26) - restore SELinux contexts that don't get set properly
