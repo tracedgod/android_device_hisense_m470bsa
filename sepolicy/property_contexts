@@ -1,0 +1,2 @@
+# label dopa.* properties as system properties
+dopa.           u:object_r:system_prop:s0

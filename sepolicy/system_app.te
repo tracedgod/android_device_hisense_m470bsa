@@ -4,3 +4,9 @@ allow system_app knv_device:chr_file rw_file_perms;
 allow system_app sysfs_devices_tegradc:file rw_file_perms;
 allow system_app sysfs_devices_tegradc:lnk_file r_file_perms;
 allow system_app sysfs_devices_tegradc:dir r_dir_perms;
+
+# allow Performance.apk to set properties (e.g. ADB tcp port)
+set_prop(system_app, shell_prop)
+
+# allow Performance.apk to access selected sysfs entries (e.g. dynamic fsync)
+allow system_app sysfs_writable:file rw_file_perms;

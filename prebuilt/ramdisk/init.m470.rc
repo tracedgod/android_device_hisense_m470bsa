@@ -269,6 +269,13 @@ on boot
     chown gps system /data/gps/
     chown gps system /dev/ttyHS1
 
+# DoPa (2016/03/04) - entries set by Performance.apk
+    chown system system /sys/kernel/dyn_fsync/Dyn_fsync_active
+    chown system system /sys/kernel/mm/ksm/run
+    chown system system /sys/kernel/mm/ksm/sleep_millisecs
+# Performance.apk relies on this being set to a sane value when it toggles ksm/run
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+
 # dopa (2014/03/12) - use powersave governor when when "off" but attached to AC
 on charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
@@ -420,7 +427,5 @@ on property:sys.boot_completed=1
     restorecon /sys/class/rfkill/rfkill0/state
     restorecon /sys/class/rfkill/rfkill0/type
     write /sys/module/cpu_tegra/parameters/cpu_user_cap 0
-    write /sys/kernel/mm/ksm/sleep_millisecs 500
-    write /sys/kernel/mm/ksm/run 1
     start initd
 

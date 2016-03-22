@@ -34,6 +34,11 @@
 /sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/state   --  u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/platform/bluedroid_pm.0/rfkill/rfkill0/type    --  u:object_r:sysfs_bluetooth_writable:s0
 
+# DoPa (201600304) - sysfs entries accessed by Performance.apk
+/sys/kernel/mm/ksm/run                  --  u:object_r:sysfs_writable:s0
+/sys/kernel/mm/ksm/sleep_millisecs      --  u:object_r:sysfs_writable:s0
+/sys/kernel/dyn_fsync/Dyn_fsync_active  --  u:object_r:sysfs_writable:s0
+
 /system/bin/brcm_patchram_plus          u:object_r:hci_attach_exec:s0
 /system/bin/btmacwriter                 u:object_r:btmacwriter_exec:s0
 /system/bin/fsck.exfat                  u:object_r:fsck_exec:s0
